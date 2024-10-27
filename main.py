@@ -121,7 +121,7 @@ def generate_page(filename):
             {"role": "user", "content": f"{filename}.html"}
         ],
         max_tokens=4095,
-        temperature=random.uniform(1.1, 1.25)
+        temperature=random.uniform(0.9, 1.22)
     )
 
     html_content = response.choices[0].message.content.strip()
