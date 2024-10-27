@@ -7,3 +7,4 @@ flask
 boto3
 openai
 python-dotenv
+gunicorn
