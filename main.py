@@ -110,8 +110,7 @@ def generate_page(filename):
         # Handle file not found or other errors from S3
         pass
 
-    # Randomly pick between 'gpt-4o' and 'gpt-4o-mini'
-    model = random.choice(["gpt-4o", "gpt-4o-mini"])
+    model = "gpt-4o-mini"
 
     # Generate page using OpenAI Chat Completions API
     response = openai.chat.completions.create(
