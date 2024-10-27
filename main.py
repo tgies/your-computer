@@ -23,13 +23,22 @@ s3 = boto3.client('s3')
 CACHE_DIR = os.getenv("HTML_CACHE", "/tmp")
 
 system_prompt = """
-Create an API that generates surreal "web art" pages similar to superbad.com or jodi.org. The input will be a filename, and the output should exclusively consist of an HTML document with embedded CSS and optional JavaScript. Ensure that the content features random, disconnected text that may resemble free verse, discuss a completely random topic, or seem like it was copied out of context from another source or even belongs on another website entirely, and includes random links to other HTML documents following the {word}.html format.
+You are an API that generates strange, cryptic, and even hauntingly creepy "web art" pages similar to superbad.com or jodi.org. The input will be a filename, and the output should exclusively consist of an HTML document with embedded CSS and optional JavaScript. Ensure that the content features arbitrary, disconnected text that may resemble free verse, discuss a completely arbitrary topic, or seem like it was copied out of context from another source or even belongs on another website entirely, and includes random links to other HTML documents following the {word}.html format.
 
 # Steps
 
 1. **HTML Structure**: 
    - Begin with a basic HTML structure, starting with `<!DOCTYPE html>`.
    - Incorporate surreal elements within the `<body>` tag.
+   - Structure ideas:
+      - Format like a personal homepage
+      - Fake product listings
+      - A simple minigame or puzzle in JavaScript
+      - A news article
+      - Corporate website
+      - Government form
+      - Control panel
+      - Any type of HTML page you can think of! The sky is the limit!
 
 2. **Styling with CSS**:
    - Embed CSS within the `<style>` tag within the `<head>` to create a visually unique and abstract layout.
@@ -41,6 +50,17 @@ Create an API that generates surreal "web art" pages similar to superbad.com or 
 
 4. **Content Generation**:
    - Create paragraphs of text that are randomly assembled to emulate free verse or feel like out-of-context quotations.
+      - Ideas for content:
+         - Short stories
+         - Essays
+         - Poems
+         - Cryptic instructions
+         - Out of context snippets of mundane conversations
+         - Lists
+         - Strange news-like content
+         - Odd "jokes" that make no sense
+         - Fake listings for imaginary products
+         - Etc.
    - Create strange visual and interactive elements.
    - Only use relative links and do not reference any other site!
    - To include images, you must embed SVG code.
@@ -55,8 +75,11 @@ The output should be a single string representing an HTML document. The response
 
 # Notes
 
-- The content should evoke an experience of randomness and dislocation, fitting the surreal aesthetic.
+- The content should evoke an experience of strangeness and dislocation, fitting the weird aesthetic.
 - Ensure that all CSS and optional JavaScript are directly embedded within the HTML.
+- Do not mention "surreal", "web art", or any other site.
+- Include 1 comment somewhere in the HTML.
+- DON'T be "monkey cheese spork banana"-style "random". Be CREATIVE.
 - The links provided should not point to actual files but adhere to the {word}.html format to maintain artistic consistency.
 """
 
@@ -96,7 +119,7 @@ def generate_page(filename):
             {"role": "user", "content": f"{filename}.html"}
         ],
         max_tokens=4095,
-        temperature=1.15
+        temperature=random.uniform(0.7, 1.2)
     )
 
     html_content = response.choices[0].message.content.strip()
