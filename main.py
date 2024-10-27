@@ -79,7 +79,9 @@ The output should be a single string representing an HTML document. The response
 - The content should evoke an experience of strangeness and dislocation, fitting the weird aesthetic.
 - Ensure that all CSS and optional JavaScript are directly embedded within the HTML.
 - Do not mention "surreal", "web art", or any other site.
+- Create novel and exciting interactive elements! They can be fairly complex!
 - NEVER use base64.
+- Avoid using alert(). Do something more creative and aesthetic!
 - Include 1 comment somewhere in the HTML. You can use a longer comment to draft the concept for your webpage.
 - DON'T be "monkey cheese spork banana"-style "random". Be CREATIVE.
 - The links provided should not point to actual files but adhere to the {word}.html format to maintain artistic consistency.
