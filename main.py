@@ -6,6 +6,7 @@ from botocore.exceptions import NoCredentialsError
 import hashlib
 from dotenv import load_dotenv
 import re
+import random
 
 load_dotenv()
 
@@ -84,10 +85,12 @@ def generate_page(filename):
         # Handle file not found or other errors from S3
         pass
 
-    # Generate page using OpenAI Chat Completions API
+    # Randomly pick between 'gpt-4o' and 'gpt-4o-mini'
+    model = random.choice(["gpt-4o", "gpt-4o-mini"])
 
+    # Generate page using OpenAI Chat Completions API
     response = openai.chat.completions.create(
-        model="gpt-4o-mini",
+        model=model,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"{filename}.html"}
